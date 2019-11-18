@@ -62,9 +62,9 @@ fs.readFile('./input/urls.txt', "utf-8", (err, data) => {
                * Llamada a la api de SISTRIX y comprueba que sea DOMINGO
                * si no es domingo simplemente reescribe el dato anterior 
                */
-              data.interaction[0].VI = (dateGet.getDay()) == 0 ?
-                await Sistrix.visibilityIndex(e) :
-                ok.interaction[ok.interaction.length - 1].VI;
+              // data.interaction[0].VI = (dateGet.getDay()) == 0 ?
+              //   await Sistrix.visibilityIndex(e) :
+              //   ok.interaction[ok.interaction.length - 1].VI;
 
               fetch(`${apiURL}/id/${idUrl}`, { method: 'PUT', body: JSON.stringify(data), headers: { 'Content-Type': 'application/json' } })
                 .then(res => res.json())

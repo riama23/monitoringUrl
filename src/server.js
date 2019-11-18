@@ -3,7 +3,8 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const path = require('path');
 const mongoose = require('mongoose');
-const URI = 'mongodb://localhost:27017/prueba';
+const bodyParser = require('body-parser')
+const URI = 'mongodb://localhost:27017/Monitoring';
 dotenv.config();
 
 const app = express();
@@ -18,7 +19,8 @@ app.set('port', process.env.PORT);
 
 // Middlewares
 app.use(morgan('dev'));
-app.use(express.json());
+app.use(bodyParser.json({limit:1024*1024*20, type:'application/json'}));
+app.use(bodyParser.urlencoded({extended:true,limit:1024*1024*20,type:'application/x-www-form-urlencoding' }));
 
 // Routes
 app.use('/api/urls', require('./routes/url.routes'));
