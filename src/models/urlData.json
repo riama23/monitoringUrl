@@ -1,0 +1,19 @@
+{
+  "url": "${e}",
+  "interaction": [
+    {
+      "url": "",
+      "ok": true,
+      "statusCode": 0,
+      "canonical": "",
+      "autoCanonical": "",
+      "title": "",
+      "description": "",
+      "googlebot": null,
+      "VI": 0,
+      "h": {},
+      "p": {},
+      "date": "${date}"
+    }
+  ]
+}

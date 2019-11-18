@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
   res.json(int);
 });
 
-// GET one URL %22 = "
+// GET one URL
 router.get('/id/:id', async (req, res) => {
   const int = await Urls.findById(req.params.id);
   res.json(int);
@@ -21,6 +21,13 @@ router.get('/id/:id/date/:date', async (req, res) => {
   const int = await Urls.find({ _id: req.params.id });
   const index = int[0].interaction.findIndex(e => e.date == req.params.date)
   res.json(int[0].interaction[index]);
+});
+// GET one URL and DAY to DAY
+router.get('/id/:id/date/:dateI/:dateF', async (req, res) => {
+  const int = await Urls.find({ _id: req.params.id });
+  const index = int[0].interaction.findIndex(e => e.date == req.params.dateI)
+  const indexF = int[0].interaction.findIndex(e => e.date == req.params.dateF)
+  res.json(int[0].interaction.slice(index, indexF+1));
 });
 
 // ADD a new URL
@@ -35,9 +42,9 @@ router.post('/', async (req, res) => {
 router.put('/id/:id', async (req, res) => {
   const int = await Urls.findById(req.params.id);
   let { url, interaction } = req.body;
-  const er = new RegExp(/"date":"20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]"/, 'g')
   await int.interaction.push(interaction[0])
   // Comprobación de datos
+  const er = new RegExp(/"date":"20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]"/, 'g')
   await JSON.stringify(int.interaction[int.interaction.length - 1]).replace(er, '') === JSON.stringify(int.interaction[int.interaction.length - 2]).replace(er, '') ?
     int.changes.push(false) : int.changes.push(true)
 
