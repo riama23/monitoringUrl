@@ -15,7 +15,7 @@ mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .catch(error => console.error(error));
 
 // Settings 
-app.set('port', process.env.PORT);
+app.set('port', 5050);
 
 // Middlewares
 app.use(morgan('dev'));
@@ -23,7 +23,7 @@ app.use(bodyParser.json({limit:1024*1024*20, type:'application/json'}));
 app.use(bodyParser.urlencoded({extended:true,limit:1024*1024*20,type:'application/x-www-form-urlencoding' }));
 
 // Routes
-app.use('/api/urls', require('./routes/url.routes'));
+app.use('/api/www.einforma.com', require('./routes/url.routes'));
 
 // Static Files
 app.use(express.static(path.join(__dirname, 'public')));;

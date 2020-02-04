@@ -6,5 +6,5 @@ module.exports = {
   apiSistrix: process.env.api_key_SISTRIX,
 
   // API Mongoose
-  apiURL: `http://localhost:${process.env.PORT}/api/urls`
+  apiURL: `http://localhost:5050/api/www.einforma.com`
 }
